@@ -1,9 +1,12 @@
+@import "tailwindcss";
+
 :root {
   --text: #FFFFFF;
   --text-secondary: #A07EB9;
   --text-terciary: #CECDCD;
   --bg: #030410;
   --button: #B64826;
+  --button-hover: #943c21;
   --bg-card: #3B1F4E66;
   --bg-card-gradient: background: linear-gradient(178.37deg, #7B658B -13.92%, rgba(104, 80, 120, 0.817) 11.17%, #190F29 68.34%);
 
