@@ -2,7 +2,7 @@ import aboutImage from "../../assets/films.png"
 
 function AboutSection() {
     return (
-        <div className="flex gap-[132px] mt-[226px] items-center justify-between mx-[188px]">
+        <section className="flex gap-[132px] mt-[226px] items-center justify-between mx-[188px]" id="sobre">
             <img src={aboutImage} alt="Filmes"/>
             <div className="flex flex-col items-center text-center">
                 <h1 className="text-(--text) font-bold text-[64px] mb-[40px]">
@@ -24,7 +24,7 @@ function AboutSection() {
                     </p>
                 </div>
             </div>
-        </div>
+        </section>
     )
 }
 
