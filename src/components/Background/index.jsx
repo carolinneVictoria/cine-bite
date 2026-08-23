@@ -23,6 +23,20 @@ function Background( {children} ) {
                             blur-[130px] animate-float-light 
                             [animation-duration:18s]" 
             />
+            <div className="absolute 
+                            bottom-0 top-[1867px] left-[1260px] 
+                            w-[451px] h-[451px]
+                            rounded-full bg-[#2F1A41]/100
+                            blur-[130px] animate-float-light 
+                            [animation-duration:18s]" 
+            />
+            <div className="absolute 
+                            bottom-0 top-[1928px] left-[-406px] 
+                            w-[451px] h-[451px]
+                            rounded-full bg-[#A07EB9]/100
+                            blur-[130px] animate-float-light 
+                            [animation-duration:18s]" 
+            />
             {children}
         </>
     )
