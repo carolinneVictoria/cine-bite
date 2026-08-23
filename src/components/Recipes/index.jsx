@@ -1,6 +1,5 @@
 function Recipe({title, image}) {
     return (
-        <div>
             <div className="relative bg-(--bg-card) rounded-[25px] w-[240px] h-[246px] flex flex-col justify-end items-center gap-2 pb-10 px-4">
                 <img src={image}
                     className="absolute -top-15 left-1/2 -translate-x-1/2 rounded-[100%] w-[140px] h-[140px] object-cover"
@@ -10,7 +9,6 @@ function Recipe({title, image}) {
                     Acessar
                 </button>
             </div>
-        </div>
     );
 }
 
