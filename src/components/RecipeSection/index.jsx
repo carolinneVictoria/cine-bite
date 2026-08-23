@@ -39,9 +39,9 @@ function RecipeSection () {
         img: wafflesImg
     },
     ]
-    
+
     return(
-        <>
+        <section id="receitas">
             <h1 className="text-(--text) text-center font-bold text-[90px] mt-[229px] mb-[118px]">Receitas</h1>
 
             <div className="grid grid-cols-3 justify-items-center gap-[94px] mx-[295px]">
@@ -53,7 +53,7 @@ function RecipeSection () {
                 />
             ))};
             </div>
-        </>
+        </section>
     )
 }
 
