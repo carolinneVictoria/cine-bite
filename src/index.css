@@ -13,7 +13,7 @@
   --button: #B64826;
   --button-hover: #943c21;
   --bg-card: #3B1F4E66;
-  --bg-card-gradient: background: linear-gradient(178.37deg, #7B658B -13.92%, rgba(104, 80, 120, 0.817) 11.17%, #190F29 68.34%);
+  --bg-card-gradient: linear-gradient( 178.37deg, #7B658B -13.92%, rgba(104, 80, 120, 0.817) 11.17%, #190F29 68.34% );
 
   font-family: "Outfit", sans-serif;
 }
