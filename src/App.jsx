@@ -4,6 +4,7 @@ import Background from './components/Background'
 import Header from './components/Header'
 import MainSection from './components/MainSection'
 import RecipeSection from './components/RecipeSection'
+import TestimonialsSection from './components/TestimonialsSection'
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
               <MainSection />
               <AboutSection />
               <RecipeSection />
+              <TestimonialsSection />
             </div>
           </Background>
         </section>
