@@ -1,7 +1,7 @@
 import { Box, Modal } from "@mui/material";
 import { useState } from "react";
 
-function Recipe({title, image, description, ingredientes, modoPreparo}) {
+function Recipe({title, image, description, ingredientes, modoPreparo, category, time, difficulty, isFavorite, onToggleFavorite}) {
     const [isOpen, setIsOpen] = useState(false);
 
     function handleOpen(){
@@ -13,11 +13,19 @@ function Recipe({title, image, description, ingredientes, modoPreparo}) {
 
     return (
         <div className="relative bg-(--bg-card) rounded-[25px] w-[240px] h-[246px] flex flex-col justify-end items-center gap-2 pb-10 px-4">
-            <img src={image}
+            <img src={image} alt={title}
                 className="absolute -top-15 left-1/2 -translate-x-1/2 rounded-[100%] w-[140px] h-[140px] object-cover"
             />
-            <h1 className="text-(--text) text-[24px] text-center font-bold">{title}</h1>
-            <button onClick={handleOpen} className="bg-(--button) hover:bg-(--button-hover) duration-200 rounded-[83px] font-bold cursor-pointer px-8 py-2 text-[16px] text-(--text)">
+            <button
+                onClick={onToggleFavorite}
+                aria-label={isFavorite ? `Remover ${title} dos favoritos` : `Adicionar ${title} aos favoritos`}
+                className="absolute top-3 right-3 text-[24px] text-(--text) cursor-pointer"
+            >
+                {isFavorite ? "♥" : "♡"}
+            </button>
+            <h1 className="translate-y-4 text-(--text) text-[24px] text-center font-bold">{title}</h1>
+            <p className="translate-y-4 text-(--text-terciary) text-[13px]">{category} · {time} · {difficulty}</p>
+            <button onClick={handleOpen} className="translate-y-4 bg-(--button) hover:bg-(--button-hover) duration-200 rounded-[83px] font-bold cursor-pointer px-8 py-2 text-[16px] text-(--text)">
                 Acessar
             </button>
             <Modal
@@ -28,7 +36,7 @@ function Recipe({title, image, description, ingredientes, modoPreparo}) {
             >
                 <Box className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90vw] max-w-[480px] max-h-[85vh] bg-blue-950 rounded-[25px] overflow-hidden flex flex-col outline-none">
                     <div className="relative shrink-0">
-                        <img src={image}
+                        <img src={image} alt={title}
                             className="w-full h-[220px] object-cover"
                         />
                         <button
@@ -40,7 +48,7 @@ function Recipe({title, image, description, ingredientes, modoPreparo}) {
                         </button>
                     </div>
 
-                    <div className="overflow-y-auto px-8 py-6 flex flex-col gap-6">
+                    <div className="overflow-y-auto px-8 py- flex flex-col gap-8">
                         <h2 id="recipe-title" className="text-(--text) font-bold text-[28px] text-center">
                             {title}
                         </h2>
@@ -48,6 +56,8 @@ function Recipe({title, image, description, ingredientes, modoPreparo}) {
                         <p id="recipe-description" className="text-(--text-terciary) text-[16px] text-center">
                             {description}
                         </p>
+
+                        <p className="text-(--text-secondary) text-center font-bold">{category} · {time} · {difficulty}</p>
 
                         <div>
                             <h3 className="text-(--text-secondary) font-bold text-[20px] mb-2">Ingredientes</h3>
