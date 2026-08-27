@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Recipe from "../Recipes";
 import lasanhaImg from "../../assets/lasanha.png"
 import canolliImg from "../../assets/burritos.jpg"
@@ -204,6 +204,23 @@ function RecipeSection() {
         );
     }
 
+    const recipeRefs = useRef({});
+
+    function handleFeelingLucky() {
+        const pool = filteredReceitas.length > 0 ? filteredReceitas : receitas;
+        const sorteada = pool[Math.floor(Math.random() * pool.length)];
+        if (!sorteada) return;
+
+        setSearch("");
+        setCategory("Todas");
+        setShowFavorites(false);
+
+        const card = document.getElementById(`receita-${sorteada.id}`);
+        card?.scrollIntoView({ behavior: "smooth", block: "center" });
+
+        setTimeout(() => recipeRefs.current[sorteada.id]?.open(), 400);
+    }
+
     return (
         <section id="receitas" className="pb-32">
             <h1 className="text-(--text) text-center font-bold text-[90px] mt-[229px] mb-10">
@@ -285,6 +302,26 @@ function RecipeSection() {
                         ♥ Favoritos ({favorites.length})
                     </button>
                 </div>
+
+                <button
+                    onClick={handleFeelingLucky}
+                    className="
+                rounded-full
+                px-6 py-3
+                text-sm
+                font-bold
+                cursor-pointer
+                border border-transparent
+                bg-(--button)
+                hover:bg-(--button-hover)
+                text-white
+                shadow-lg
+                transition-all duration-300
+                hover:-translate-y-0.5
+            "
+                >
+                    🎲 Estou com sorte
+                </button>
             </div>
 
             {/* Receitas */}
@@ -303,6 +340,8 @@ function RecipeSection() {
                 {filteredReceitas.map((receita) => (
                     <Recipe
                         key={receita.id}
+                        ref={(node) => { recipeRefs.current[receita.id] = node; }}
+                        id={receita.id}
                         title={receita.title}
                         image={receita.img}
                         description={receita.description}
