@@ -1,7 +1,7 @@
 import { Box, Modal } from "@mui/material";
-import { useState } from "react";
+import { forwardRef, useImperativeHandle, useState } from "react";
 
-function Recipe({title, image, description, ingredientes, modoPreparo, category, time, difficulty, isFavorite, onToggleFavorite}) {
+const Recipe = forwardRef(function Recipe({id, title, image, description, ingredientes, modoPreparo, category, time, difficulty, isFavorite, onToggleFavorite}, ref) {
     const [isOpen, setIsOpen] = useState(false);
 
     function handleOpen(){
@@ -11,8 +11,10 @@ function Recipe({title, image, description, ingredientes, modoPreparo, category,
         setIsOpen(false);
     }
 
+    useImperativeHandle(ref, () => ({ open: handleOpen }));
+
     return (
-        <div className="relative bg-(--bg-card) rounded-[25px] w-[240px] h-[246px] flex flex-col justify-end items-center gap-2 pb-10 px-4">
+        <div className="relative bg-(--bg-card) rounded-[25px] w-[240px] h-[246px] flex flex-col justify-end items-center gap-2 pb-10 px-4" id={`receita-${id}`}>
             <img src={image} alt={title}
                 className="absolute -top-15 left-1/2 -translate-x-1/2 rounded-[100%] w-[140px] h-[140px] object-cover"
             />
@@ -81,6 +83,6 @@ function Recipe({title, image, description, ingredientes, modoPreparo, category,
             </Modal>
         </div>
     );
-}
+});
 
 export default Recipe;
