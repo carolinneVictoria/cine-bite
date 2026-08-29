@@ -19,7 +19,7 @@ function Footer() {
                 </div>
             </div>
 
-            <p>© 2024 Cook the Classics. Todos os direitos reservados.</p>
+            <p>© 2026 Cook the Classics. Todos os direitos reservados.</p>
         </section>
     )
 }
