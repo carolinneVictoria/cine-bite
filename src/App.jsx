@@ -1,28 +1,23 @@
+import { Route, Routes } from 'react-router-dom'
 import './App.css'
-import AboutSection from './components/AboutSection'
-import Background from './components/Background'
-import Footer from './components/Footer'
-import Header from './components/Header'
-import MainSection from './components/MainSection'
-import RecipeSection from './components/RecipeSection'
-import TestimonialsSection from './components/TestimonialsSection'
+import Layout from './components/Layout'
+import ScrollToTop from './components/ScrollToTop'
+import HomePage from './pages/HomePage'
+import RecipePage from './pages/RecipePage'
 
 function App() {
 
   return (
-        <section className="bg-(--bg) w-full min-h-screen">
-          <Background>
-            <div className="relative z-10">
-              <Header />
-              <MainSection />
-              <AboutSection />
-              <RecipeSection />
-              <TestimonialsSection />
-              <Footer />
-            </div>
-          </Background>
-        </section>
-  )    
+    <>
+      <ScrollToTop />
+      <Routes>
+        <Route element={<Layout />} >
+          <Route path="/" element={<HomePage />} />
+          <Route path="/receita/:id" element={<RecipePage />} />
+        </Route>
+      </Routes>
+    </>
+  )
 }
 
-export default App
+export default App;
