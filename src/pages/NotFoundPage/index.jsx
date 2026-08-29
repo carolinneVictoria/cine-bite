@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 function NotFoundPage() {
     return (
-        <div className="relative z-10 flex flex-col items-center justify-center gap-6 text-(--text) text-center px-6 min-h-screen">
+        <div className="relative z-10 flex flex-col items-center justify-center gap-6 text-(--text) text-center px-6 py-32">
             <span className="text-6xl">🎬</span>
             <h1 className="font-bold text-[90px] leading-none">404</h1>
             <p className="text-2xl font-bold">Essa cena não existe</p>
