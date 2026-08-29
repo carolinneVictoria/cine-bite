@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { receitas } from "../../data/receitas";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import NotFoundPage from "../NotFoundPage";
 
 function RecipePage() {
     const { id } = useParams();
@@ -63,18 +64,7 @@ function RecipePage() {
     }
 
     if (!receita) {
-        return (
-            <div className="relative z-10 flex flex-col items-center justify-center gap-6 text-(--text) text-center px-6 min-h-screen">
-                <span className="text-6xl">🍽️</span>
-                <p className="text-2xl font-bold">Receita não encontrada</p>
-                <Link
-                    to="/#receitas"
-                    className="bg-(--button) hover:bg-(--button-hover) duration-200 rounded-full px-8 py-3 font-bold text-(--text)"
-                >
-                    Voltar às receitas
-                </Link>
-            </div>
-        );
+        return <NotFoundPage />;
     }
 
     return (
