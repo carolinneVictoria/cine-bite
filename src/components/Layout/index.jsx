@@ -5,7 +5,7 @@ import Footer from "../Footer";
 
 function Layout() {
     return (
-        <section className="bg-(--bg) w-full min-h-screen">
+        <section className="relative bg-(--bg) w-full min-h-screen overflow-hidden">
             <Background>
                 <div className="relative z-10">
                     <Header />
