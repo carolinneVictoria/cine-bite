@@ -1,12 +1,10 @@
 import { useEffect, useMemo, useState } from "react";
-import Background from "../../components/Background";
-import Header from "../../components/Header";
-import Footer from "../../components/Footer";
 import { receitas } from "../../data/receitas";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
-// TODO: quando o React Router for configurado, trocar a prop `id` por:
-// const { id } = useParams();
-function RecipePage({ id }) {
+function RecipePage() {
+    const { id } = useParams();
+    const navigate = useNavigate();
     const receita = useMemo(
         () => receitas.find((item) => String(item.id) === String(id)),
         [id]
@@ -66,37 +64,28 @@ function RecipePage({ id }) {
 
     if (!receita) {
         return (
-            <section className="bg-(--bg) w-full min-h-screen">
-                <Background>
-                    <div className="relative z-10 flex flex-col items-center justify-center gap-6 text-(--text) text-center px-6 min-h-screen">
-                        <span className="text-6xl">🍽️</span>
-                        <p className="text-2xl font-bold">Receita não encontrada</p>
-                        <a
-                            href="/#receitas"
-                            className="bg-(--button) hover:bg-(--button-hover) duration-200 rounded-full px-8 py-3 font-bold text-(--text)"
-                        >
-                            Voltar às receitas
-                        </a>
-                    </div>
-                </Background>
-            </section>
+            <div className="relative z-10 flex flex-col items-center justify-center gap-6 text-(--text) text-center px-6 min-h-screen">
+                <span className="text-6xl">🍽️</span>
+                <p className="text-2xl font-bold">Receita não encontrada</p>
+                <Link
+                    to="/#receitas"
+                    className="bg-(--button) hover:bg-(--button-hover) duration-200 rounded-full px-8 py-3 font-bold text-(--text)"
+                >
+                    Voltar às receitas
+                </Link>
+            </div>
         );
     }
 
     return (
-        <section className="bg-(--bg) w-full min-h-screen">
-            <Background>
-                <div className="relative z-10">
-                    <Header />
-
                     <main className="max-w-[820px] mx-auto px-6 pb-32">
-                        {/* TODO: trocar por <Link to="/#receitas"> quando o React Router for configurado */}
-                        <a
-                            href="/#receitas"
-                            className="inline-block text-(--text) opacity-60 hover:opacity-100 duration-200 mb-10"
+                        {/* navigate(-1) faz um POP de verdade, restaurando a posição de rolagem anterior */}
+                        <button
+                            onClick={() => navigate(-1)}
+                            className="inline-block text-(--text) opacity-60 hover:opacity-100 duration-200 mb-10 cursor-pointer"
                         >
                             ← Voltar às receitas
-                        </a>
+                        </button>
 
                         <div className="rounded-[25px] overflow-hidden mb-10">
                             <img
@@ -206,11 +195,6 @@ function RecipePage({ id }) {
                             )}
                         </div>
                     </main>
-
-                    <Footer />
-                </div>
-            </Background>
-        </section>
     );
 }
 
