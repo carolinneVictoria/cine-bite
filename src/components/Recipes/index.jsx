@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function Recipe({id, title, image, category, time, difficulty, isFavorite, onToggleFavorite}) {
     return (
         <div className="relative bg-(--bg-card) rounded-[25px] w-[240px] h-[246px] flex flex-col justify-end items-center gap-2 pb-10 px-4">
@@ -13,13 +15,12 @@ function Recipe({id, title, image, category, time, difficulty, isFavorite, onTog
             </button>
             <h1 className="translate-y-4 text-(--text) text-[24px] text-center font-bold">{title}</h1>
             <p className="translate-y-4 text-(--text-terciary) text-[13px]">{category} · {time} · {difficulty}</p>
-            {/* TODO: quando o React Router for configurado, trocar por <Link to={`/receita/${id}`}> */}
-            <a
-                href={`/receita/${id}`}
+            <Link
+                to={`/receita/${id}`}
                 className="translate-y-4 bg-(--button) hover:bg-(--button-hover) duration-200 rounded-[83px] font-bold cursor-pointer px-8 py-2 text-[16px] text-(--text)"
             >
                 Acessar
-            </a>
+            </Link>
         </div>
     );
 }
