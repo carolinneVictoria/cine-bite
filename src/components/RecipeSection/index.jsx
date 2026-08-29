@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Recipe from "../Recipes";
 import { receitas } from "../../data/receitas";
+import { useNavigate } from "react-router-dom";
 
 function RecipeSection() {
     const [search, setSearch] = useState("");
@@ -13,6 +14,7 @@ function RecipeSection() {
             return [];
         }
     });
+    const navigate = useNavigate();
 
     useEffect(() => {
         localStorage.setItem("cine-bite-favorites", JSON.stringify(favorites));
@@ -38,8 +40,7 @@ function RecipeSection() {
         const sorteada = pool[Math.floor(Math.random() * pool.length)];
         if (!sorteada) return;
 
-        // TODO: quando o React Router for configurado, trocar por navigate(`/receita/${sorteada.id}`)
-        window.location.href = `/receita/${sorteada.id}`;
+        navigate(`/receita/${sorteada.id}`);
     }
 
     return (
